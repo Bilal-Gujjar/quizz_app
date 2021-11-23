@@ -3,6 +3,8 @@ import './App.css';
 import { getQuizDetails } from './Services/quizz_services';
 import { QuizType } from './Types/quiztype';
 import QuestionCard from './components/QuestionCard';
+import logo from "./loading.gif";
+
 
 function App() {
 
@@ -43,11 +45,13 @@ function App() {
   }
   if (!quiz.length)
 
-    return <h1>Please Wait for data fatching  Api From remote server..........</h1>
+    return <h1 style={{textAlign:"center"}}> 
+       <img src={logo} alt="Logo" />
+           </h1>
 
   if (showResult) {
-    return (<div className="question-container result-container">
-      <h2>Result</h2>
+    return (<div className="question-container">
+      <h2 style={{fontSize:'70px'}}>Result</h2>
 
       <p className="result-text">
         You final score is
@@ -58,13 +62,15 @@ function App() {
   }
 
   return (
-    <div>
+    <div className='main'>
+      <div style={{marginTop:"30px", fontWeight:'bold',fontSize:'60px',borderRadius:"10px",backgroundColor:"pink"}}>
+        Quiz App With TypeScript
       <QuestionCard
         options={quiz[currentStep].option}
         question={quiz[currentStep].question}
         callback={handleSubmit}
       />
-
+    </div>
     </div>
   );
 }
